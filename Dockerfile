@@ -20,7 +20,13 @@ RUN mkdir /src && \
 	make install && \
 	make rebuild_cache && \
 	cd / && \
-	rm -rf /src 
+	rm -rf /src && \
+	openvas-mkcert -f -q && \
+	openvas-mkcert-client -n -i && \
+	openvas-nvt-sync
+VOLUME /usr/local/var/lib/openvas/plugins
+
+ENTRYPOINT ["openvassd", "-f"]
 
 EXPOSE 9391
 
