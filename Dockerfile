@@ -24,7 +24,8 @@ RUN mkdir /src && \
 	openvas-mkcert -f -q && \
 	openvas-mkcert-client -n -i && \
 	openvas-nvt-sync
-VOLUME /usr/local/var/lib/openvas/plugins
+
+VOLUME /usr/local/var/lib/openvas/plugins /usr/local/var/lib/openvas/CA /usr/local/var/lib/openvas/private
 
 ENTRYPOINT ["openvassd", "-f"]
 
